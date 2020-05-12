@@ -1,0 +1,2 @@
+rootProject.name='HDWall'
+include ':app'
