@@ -1,5 +1,7 @@
 package com.example.hdwall.backend;
 
+import android.util.Log;
+
 import org.bitcoinj.crypto.ChildNumber;
 import org.bitcoinj.crypto.DeterministicHierarchy;
 import org.bitcoinj.crypto.DeterministicKey;
@@ -12,9 +14,9 @@ import java.util.List;
 
 import static java.lang.String.join;
 
-public class Bitcoin {
+public class BitcoinAPI {
 
-    private final String bip44Path = "44H/0H/0H";
+    private static final String BIP44PATH = "44H/0H/0H";
 
     //Entropy of 128Bits
     public byte[] entropyGenerator(){
@@ -30,9 +32,8 @@ public class Bitcoin {
         List<String> words = null;
         try{
             words = MnemonicCode.INSTANCE.toMnemonic(entropy);
-            String mnemonic = join(" ", words);
         }catch(Exception e){
-            e.printStackTrace();
+            Log.e("Error","Couldn't generate mnemonic");
         }
         return words;
     }
@@ -52,7 +53,7 @@ public class Bitcoin {
 
     //Derive bitcoin root key
     public DeterministicKey deriveBitcoinRootKey(DeterministicKey masterKey){
-        List<ChildNumber> keyPath = HDUtils.parsePath(bip44Path);
+        List<ChildNumber> keyPath = HDUtils.parsePath(BIP44PATH);
         DeterministicHierarchy hierarchy = new DeterministicHierarchy(masterKey);
         DeterministicKey walletKey = hierarchy.get(keyPath, false, true);
         return walletKey;

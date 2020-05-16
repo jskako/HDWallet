@@ -3,10 +3,10 @@ package com.example.hdwall;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
-import com.example.hdwall.backend.Bitcoin;
+import com.example.hdwall.backend.AutomateBoringStuff;
+import com.example.hdwall.backend.BitcoinAPI;
 
 import java.util.List;
 
@@ -21,15 +21,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void test(){
         final TextView textView = this.findViewById(R.id.test);
-        Bitcoin bitcoin = new Bitcoin();
-        byte[] entropy = bitcoin.entropyGenerator();
-        List<String> words = bitcoin.mnemonicGenerator(entropy);
-
-        StringBuilder builder = new StringBuilder();
-        for (String details : words) {
-            //Log.e("Details: ",details);
-            builder.append(details +  " ");
-        }
-        textView.setText(builder.toString());
+        BitcoinAPI bc = new BitcoinAPI();
+        byte[] entropy = bc.entropyGenerator();
+        List<String> words = bc.mnemonicGenerator(entropy);
+        AutomateBoringStuff abs = new AutomateBoringStuff();
+        String myWords = abs.convertListToString(words, " ");
+        textView.setText(myWords);
     }
 }
