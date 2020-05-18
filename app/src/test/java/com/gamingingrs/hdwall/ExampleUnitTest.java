@@ -1,4 +1,4 @@
-package com.example.hdwall;
+package com.gamingingrs.hdwall;
 
 import org.junit.Test;
 

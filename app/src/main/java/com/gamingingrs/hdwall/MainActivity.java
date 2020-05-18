@@ -1,12 +1,12 @@
-package com.example.hdwall;
+package com.gamingingrs.hdwall;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.hdwall.backend.AutomateBoringStuff;
-import com.example.hdwall.backend.BitcoinAPI;
+import com.gamingingrs.hdwall.backend.AutomateBoringStuff;
+import com.gamingingrs.hdwall.backend.BitcoinAPI;
 
 import java.util.List;
 

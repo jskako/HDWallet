@@ -1,4 +1,4 @@
-package com.example.hdwall.backend;
+package com.gamingingrs.hdwall.backend;
 
 import java.util.List;
 
